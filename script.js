@@ -11,20 +11,20 @@ db.contactlist.insertMany([
 ]);
 
 // 3. Afficher toute la liste des contacts
-print("Liste complète des contacts :");
+console.log("Liste complète des contacts :");
 db.contactlist.find().pretty();
 
 // 4. Afficher une seule personne en utilisant son ID (remplacez ObjectId("votre_id") par un ID réel)
 var contact = db.contactlist.findOne();
-print("Informations du contact avec ID " + contact._id + " :");
-printjson(db.contactlist.findOne({ _id: contact._id }));
+console.log("Informations du contact avec ID " + contact._id + " :");
+console.logjson(db.contactlist.findOne({ _id: contact._id }));
 
 // 5. Afficher tous les contacts ayant un âge > 18
-print("Contacts ayant plus de 18 ans :");
+console.log("Contacts ayant plus de 18 ans :");
 db.contactlist.find({ age: { $gt: 18 } }).pretty();
 
 // 6. Afficher tous les contacts ayant un âge > 18 et dont le nom contient "ah"
-print("Contacts ayant plus de 18 ans et contenant 'ah' dans le nom :");
+console.log("Contacts ayant plus de 18 ans et contenant 'ah' dans le nom :");
 db.contactlist.find({ age: { $gt: 18 }, nom: /ah/i }).pretty();
 
 // 7. Modifier le prénom du contact "Kefi Seif" en "Kefi Anis"
@@ -32,12 +32,12 @@ db.contactlist.updateOne(
     { nom: "Kefi", prenom: "Seif" },
     { $set: { prenom: "Anis" } }
 );
-print("Modification effectuée : Kefi Seif devient Kefi Anis");
+console.log("Modification effectuée : Kefi Seif devient Kefi Anis");
 
 // 8. Supprimer les contacts ayant moins de 5 ans
 db.contactlist.deleteMany({ age: { $lt: 5 } });
-print("Contacts de moins de 5 ans supprimés");
+console.log("Contacts de moins de 5 ans supprimés");
 
 // 9. Afficher la liste mise à jour des contacts
-print("Liste mise à jour des contacts :");
+console.log("Liste mise à jour des contacts :");
 db.contactlist.find().pretty();
